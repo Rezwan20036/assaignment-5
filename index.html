@@ -274,5 +274,28 @@
 				</div>
 			</div>
 		</div>
+        <script>
+		  document.addEventListener('DOMContentLoaded', function () {
+
+		    // **** heart Counter ****
+		    let heartCounter = document.getElementById('heart_count');
+		    let heartNumber = Number(heartCounter.textContent) || 0;		
+		    let hearts = document.querySelectorAll('.heart_click');
+
+		    hearts.forEach(function (heart) {
+		      heart.addEventListener('click', function () {
+		        heartNumber = heartNumber + 1; 
+		        heartCounter.textContent = heartNumber; 
+		        heart.style.transform = 'scale(1.2)'; 
+		        setTimeout(function () {
+		          heart.style.transform = ''; 
+		        }, 150);
+		      });
+		    });
+
+		
+		    
+		  });
+		</script>
 	</body>
 </html>
