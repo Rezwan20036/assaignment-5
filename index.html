@@ -326,6 +326,15 @@
 		      });
 		    });
 		
+		    // **** Clear history button ****
+		    let clearButton = document.getElementById('clearHistory');
+		    if (clearButton) {
+		      clearButton.addEventListener('click', function () {
+		        callHistory.innerHTML = ''; 
+		      });
+		    }
+
+
 		  });
 		</script>
 	</body>
