@@ -294,7 +294,38 @@
 		    });
 
 		
-		    
+		    // **** Call button action ****
+		    let coinCounter = document.getElementById('coins');
+		    let callHistory = document.getElementById('historyList');	
+		    let callButtons = document.querySelectorAll('.call');
+
+		    callButtons.forEach(function (button) {
+		      button.addEventListener('click', function () {
+		        let name = button.dataset.name || '';
+		        let number = button.dataset.no || '';
+
+		        let coins = Number(coinCounter.textContent) || 0;
+		        if (coins < 20) {
+		          alert("You need 20 coins to make a call!");
+		          return;
+		        }
+
+		        alert("Calling " + name + " " + number + "...");
+
+		        coins = coins - 20;
+		        coinCounter.textContent = coins;
+				const newCall = document.createElement('div');
+				newCall.className = 'flex items-center justify-between bg-gray-100 rounded-md p-3';
+				newCall.innerHTML = `<div>
+					<div class="text-lg font-medium">${name}</div>
+					<div class="text-sm text-slate-600 font-medium">${number}</div>
+				</div>
+				<div class="text-sm font-medium">${new Date().toLocaleTimeString()}</div>`;
+				historyList.appendChild(newCall);			
+		        callHistory.insertBefore(newCall, callHistory.firstChild);
+		      });
+		    });
+		
 		  });
 		</script>
 	</body>
