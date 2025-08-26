@@ -335,6 +335,23 @@
 		    }
 
 
+			// **** copy Counter ****
+		    let copyCounter = document.getElementById('copy_count');
+		    let copyNumber = Number(copyCounter.textContent) || 0;		
+		    let copies = document.querySelectorAll('.copy');
+
+		    copies.forEach(function (copy) {
+		      copy.addEventListener('click', function () {
+				let copyName = copy.dataset.name || '';
+				let copyNo = copy.dataset.no || '';
+				navigator.clipboard.writeText(copyNo)
+      			.then(function () {
+      			  	copyNumber = copyNumber + 1; 
+		        	copyCounter.textContent = copyNumber;
+      			  	alert(copyName+' - '+copyNo+' copied!');
+      			});
+		      });
+		    });
 		  });
 		</script>
 	</body>
